@@ -395,12 +395,13 @@ int NCPA::EPadeSolver::solve() {
 			//lambBC = 0.0;
 			if (user_ground_impedence_found) {
 				ground_impedence_factor = I * 2.0 * PI * freq * rho0 / user_ground_impedence + lambBC;
-				std::cout << "Specified user ground impedence of " << user_ground_impedence 
-						<< " results in calculated A factor of " << ground_impedence_factor << std::endl;
+				std::cout << "Using user ground impedence of " << user_ground_impedence << std::endl;
+				//		<< " results in calculated A factor of " << ground_impedence_factor << std::endl;
 			} else {
 				ground_impedence_factor.real( lambBC );
 				ground_impedence_factor.imag( 0.0 );
-				std::cout << "Using default rigid ground with Lamb BC: A factor = " << ground_impedence_factor << std::endl;
+				std::cout << "Using default rigid ground with Lamb BC" << std::endl;
+				//: A factor = " << ground_impedence_factor << std::endl;
 			}
 
 			//std::cout << "Using atmosphere index " << profile_index << std::endl;
@@ -1018,7 +1019,7 @@ void NCPA::EPadeSolver::output1DTL( std::string filename, bool append ) {
 		out_1d.open( filename, std::ofstream::out | std::ofstream::trunc );
 	}
 	for (int i = 0; i < (NR-1); i++) {
-		out_1d << calc_az << " " << r[ i ]/1000.0 << " " << tl[ zgi_r[ i ] ][ i ].real()
+		out_1d << r[ i ]/1000.0 << " " << calc_az << " " << tl[ zgi_r[ i ] ][ i ].real()
 		       << " " << tl[ zgi_r[ i ] ][ i ].imag() << std::endl;
 	}
 	out_1d.close();

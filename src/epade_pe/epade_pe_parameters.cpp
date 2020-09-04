@@ -173,8 +173,8 @@ void NCPA::configure_epade_pe_parameter_set( NCPA::ParameterSet *ps ) {
 	// Footer with file formats and sample commands
 	ps->addBlankFooterLine();
 	ps->addFooterText("OUTPUT Files:  Format description (column order):");
-	ps->addFooterTextVerbatim("  tloss_1d.pe:                 az (deg), r (km), TL (real), TL (imag)");
-	ps->addFooterTextVerbatim("  tloss_multiplot.pe           az (deg), r (km), TL (real), TL (imag)");
+	ps->addFooterTextVerbatim("  tloss_1d.pe:                 r (km), az (deg), TL (real), TL (imag)");
+	ps->addFooterTextVerbatim("  tloss_multiplot.pe           r (km), az (deg), TL (real), TL (imag)");
 	ps->addFooterTextVerbatim("  tloss_2d.pe:                 r, z, TL (real), TL (imag)");
 	ps->addFooterTextVerbatim("  atm_profile.pe:              z,u,v,w,t,d,p,c,c_eff");
 	ps->addBlankFooterLine();
@@ -189,7 +189,7 @@ void NCPA::configure_epade_pe_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->addFooterText("../bin/ePape --singleprop --atmosfile NCPA_canonical_profile_trimmed.dat --freq 0.1 --azimuth 90 --maxrange_km 1000" );
 	ps->addBlankFooterLine();
 	//ps->addFooterText("../bin/ePape --singleprop --starter self --atmosfile2d atmosphere_2d_summary.dat --freq 0.5 --azimuth 90 --maxrange_km 1000 --lossless" );
-	ps->addFooterText("../bin/ePape --singleprop --atmosfile2d atmosphere_2d_summary.dat --freq 0.5 --azimuth 90 --maxrange_km 1000 --lossless" );
+	ps->addFooterText("../bin/ePape --singleprop --atmosfile2d atmosphere_2d_summary.dat --freq 0.5 --azimuth 90 --maxrange_km 1000 --lossless --write_2d_tloss" );
 	ps->addBlankFooterLine();
 	// ps->addFooterText("../bin/ePape --singleprop --starter self --atmosfile2d atmosphere_2d_summary.dat --freq 1.0 --azimuth 90 --maxrange_km 500 --topo");
 	// ps->addFooterText("../bin/ePape --singleprop --atmosfile2d atmosphere_2d_summary.dat --freq 1.0 --azimuth 90 --maxrange_km 500 --topo");

@@ -5,7 +5,7 @@ AC_PREREQ([2.69])
 AC_INIT([NCPA Propagation Modeling Suite], [1.4.0], [claus@olemiss.edu], ncpaprop)
 #AM_INIT_AUTOMAKE
 
-AC_CONFIG_SRCDIR([src/atmosphere/Atmosphere.h])
+AC_CONFIG_SRCDIR([src/common/parameterset.h])
 #AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_LANG([C++])
@@ -667,18 +667,10 @@ AC_CONFIG_FILES([
 		src/libmodes/Makefile
 		src/libpe/Makefile
 		src/libbroadband/Makefile
-		src/raytrace/Makefile
 		src/modess/Makefile
 		src/modbb/Makefile
-		src/modess_rd_1wcm/Makefile
-		src/pade_pe/Makefile
 		src/epade_pe/Makefile
 		src/wmod/Makefile
-		src/cmodess/Makefile
-		src/cmodbb/Makefile
-		src/tdpape/Makefile
-		src/wnlrt/Makefile
-		test/Makefile
 ])
 
 

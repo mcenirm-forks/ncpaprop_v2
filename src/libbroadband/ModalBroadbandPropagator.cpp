@@ -62,6 +62,26 @@ NCPA::ModalBroadbandPropagator::ModalBroadbandPropagator( NCPA::ParameterSet *pa
 	read_dispersion_file();
 
 	f_step = f_vec[ 1 ] - f_vec[ 0 ];
+
+  // if the option --nfft was not passed to the main program then the 
+  // NFFT default was 0. Otherwise it has the requested positive value. 
+  // Here we make sure that whatever the current value of NFFT is 
+  // it's not less than 4*n_freqs
+  if (NFFT < (4*Nfreq)) {
+    NFFT = 4 * Nfreq;
+    printf("Minimum NFFT is set to NFFT = %d\n", NFFT);
+  }
+  
+  // if you're given a source file, make sure you can fit the whole thing in NFFT points
+  if (source_type.compare("waveform") == 0) {
+    int filelines = NCPA::count_rows_arbcol( source_file.c_str() );
+    while (filelines > NFFT) {
+      NFFT *= 2;
+      std::cout << "File " << source_file << " has " << filelines << " lines, increasing NFFT to "
+                << NFFT << std::endl;
+    }
+  }
+  
 }
 
 
@@ -124,16 +144,7 @@ int NCPA::ModalBroadbandPropagator::calculate_waveform() {
   //complex<double> I = complex<double> (0.0, 1.0);
   FILE *f;
   
-  // if the option --nfft was not passed to the main program then the 
-  // NFFT default was -1. Otherwise it has the requested positive value. 
-  // Here we make sure that whatever the current value of NFFT is 
-  // it's not less than 4*n_freqs
-  if (NFFT < Nfreq) {
-    NFFT = 4 * Nfreq;
-    printf("Minimum NFFT is set to NFFT = %d\n", NFFT);
-  }
-  
-  
+
   // if zero attenuation requested set the imaginary part of the wavenumber = 0
   if (zero_attn_flag) {
     for (n=0; n<Nfreq; n++) {

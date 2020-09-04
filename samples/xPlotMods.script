@@ -139,7 +139,7 @@ then
   gnuplot -persist \
     -e "set xlabel 'Range [km]'; set ylabel 'PE: 1D transmission loss [dB]';" \
     -e "set title 'PE: 1D transmission loss; freq = $2 Hz';" \
-    -e "plot './tloss_1d.pe' using 2:(10*log10(\$3**2 + \$4**2)) with lines;"
+    -e "plot './tloss_1d.pe' using 1:(10*log10(\$3**2 + \$4**2)) with lines;"
   echo $1 $2
 fi
 
@@ -166,7 +166,7 @@ then
     -e "set cbrange [-150:-80];" \
     -e "set palette rgb  7, 5,15;" \
     -e "set size square;" \
-    -e "splot './tloss_multiprop.pe' using (\$2*(sin(\$1*pi/180))):(\$2*(cos(\$1*pi/180))):(10*log10(\$3**2 + \$4**2)) title '';" \
+    -e "splot './tloss_multiprop.pe' using (\$1*(sin(\$2*pi/180))):(\$1*(cos(\$2*pi/180))):(10*log10(\$3**2 + \$4**2)) title '';" \
     -e "set xlabel 'km'; set ylabel 'km';" \
     -e "set title 'Transmission loss'; replot;"
   echo $1 $2

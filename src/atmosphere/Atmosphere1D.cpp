@@ -1,4 +1,4 @@
-#include "Atmosphere.h"
+//#include "Atmosphere.h"
 #include "Atmosphere1D.h"
 #include "AtmosphericProperty1D.h"
 #include "units.h"
