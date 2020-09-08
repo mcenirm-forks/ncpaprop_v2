@@ -167,7 +167,10 @@ NCPA::EPadeSolver::EPadeSolver( NCPA::ParameterSet *param ) {
 		     << " m" << std::endl;
 		atm_profile_2d->remove_property("Z0");
 		atm_profile_2d->add_property( "Z0", z_ground, NCPA::Units::fromString("m") );
-		
+	} else {
+		if (!(atm_profile_2d->contains_scalar(0,"Z0"))) {
+			atm_profile_2d->add_property("Z0",z_ground,atm_profile_2d->get_altitude_units(0.0));
+		}
 	}
 
 	// set units
