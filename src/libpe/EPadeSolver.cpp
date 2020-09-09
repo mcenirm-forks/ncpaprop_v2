@@ -51,7 +51,7 @@ NCPA::EPadeSolver::EPadeSolver( NCPA::ParameterSet *param ) {
 	lossless 			= param->wasFound( "lossless" );
 	use_atm_1d			= param->wasFound( "atmosfile" );
 	use_atm_2d			= param->wasFound( "atmosfile2d" );
-	use_atm_toy			= param->wasFound( "toy" );
+	//use_atm_toy			= param->wasFound( "toy" );
 	top_layer			= !(param->wasFound( "disable_top_layer" ));
 	//use_topo			= param->wasFound( "topo" );
 	use_topo 			= false;

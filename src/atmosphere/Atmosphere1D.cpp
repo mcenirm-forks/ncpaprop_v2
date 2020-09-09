@@ -38,14 +38,23 @@ NCPA::Atmosphere1D::Atmosphere1D( size_t n_altitude_points, double *altitude_poi
 	//z_units_.push( altitude_units );
 }
 
-NCPA::Atmosphere1D::Atmosphere1D( std::istream& in ) {
-	read_from_stream( in );
-}
+// NCPA::Atmosphere1D::Atmosphere1D( std::istream& in ) {
+// 	read_from_stream( in );
+// }
 
-NCPA::Atmosphere1D::Atmosphere1D( std::string filename ) {
+NCPA::Atmosphere1D::Atmosphere1D( std::string filename, std::string headerfilename ) {
+	if (headerfilename.size() == 0) {
+		headerfilename = filename;
+	}
+	std::ifstream header_in( headerfilename );
+	read_header_from_stream( header_in );
+	header_in.close();
+
 	std::ifstream in( filename );
-	read_from_stream( in );
+	read_values_from_stream( in );
 	in.close();
+
+	headerlines.clear();
 }
 
 NCPA::Atmosphere1D::Atmosphere1D( const Atmosphere1D &source ) {
@@ -62,15 +71,9 @@ NCPA::Atmosphere1D::Atmosphere1D( const Atmosphere1D &source ) {
 	}
 }
 
-void NCPA::Atmosphere1D::read_from_stream( std::istream& in ) {
-	if ( ! in.good() ) {
-		throw std::runtime_error( "Atmosphere1D - Input stream not in good state" );
-	}
+void NCPA::Atmosphere1D::read_header_from_stream( std::istream& in ) {
 
 	std::string line;
-	std::vector< std::string > atmlines, headerlines, scalarlines;
-	std::ostringstream oss;     // for exceptions
-	size_t i;                   // repeated index variable
 
 	std::getline( in, line );
 	while ( in.good() ) {
@@ -82,6 +85,34 @@ void NCPA::Atmosphere1D::read_from_stream( std::istream& in ) {
 			if (line.size() > 1 && line[ 1 ] == '%') {
 				headerlines.push_back( line.substr( 2 ) );
 			} // otherwise it's a regular comment and can be ignored
+
+		}
+
+		std::getline( in, line );
+	}
+
+}
+
+void NCPA::Atmosphere1D::read_values_from_stream( std::istream& in ) {
+	if ( ! in.good() ) {
+		throw std::runtime_error( "Atmosphere1D - Input stream not in good state" );
+	}
+
+	std::string line;
+	std::vector< std::string > atmlines, scalarlines;
+	std::ostringstream oss;     // for exceptions
+	size_t i;                   // repeated index variable
+
+	std::getline( in, line );
+	while ( in.good() ) {
+		// lines will either be comments (# ), field descriptions (#% ), or
+		// field contents
+		line = NCPA::deblank( line );
+		if (line[ 0 ] == '#') {
+			// check second character
+			// if (line.size() > 1 && line[ 1 ] == '%') {
+			// 	headerlines.push_back( line.substr( 2 ) );
+			// } // otherwise it's a regular comment and can be ignored
 
 		} else if (line.size() == 0) {
 			// skip empty lines

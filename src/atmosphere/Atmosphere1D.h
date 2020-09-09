@@ -36,20 +36,20 @@ namespace NCPA {
 		*/
 		Atmosphere1D( size_t n_altitude_points, double *altitude_points, units_t altitude_units );
 
-		/**
+		/*
 		Constructs an Atmosphere1D object using formatted input from an input stream, normally
 		a std::ifstream representing a file.
 		@brief Constructor from input stream.
 		@param in The input stream to read the profile from.  Should already be open.
 		*/
-		Atmosphere1D( std::istream& in );
+		//Atmosphere1D( std::istream& in );
 
 		/**
 		Constructs an Atmosphere1D object using formatted input from a file.
 		@brief Constructor from formatted file.
 		@param filename The name of the file to be read from.
 		*/
-		Atmosphere1D( std::string filename );
+		Atmosphere1D( std::string filename, std::string headerfilename = "" );
 
 		/**
 		Copy constructor.
@@ -69,7 +69,12 @@ namespace NCPA {
 		@brief Read a formatted atmospheric profile from a stream.
 		@param in The input stream to read the profile from.  Should already be open.
 		*/
-		void read_from_stream( std::istream& in );
+		void read_values_from_stream( std::istream& in );
+
+		/**
+		Reads a formatted header from an input stream
+		*/
+		void read_header_from_stream( std::istream& in );
 
 		/**
 		Adds a property, including units, that depends on the altitude to the atmosphere.
@@ -165,6 +170,7 @@ namespace NCPA {
 		//size_t nz_;
 		//std::stack< units_t > z_units_;
 		NCPA::VectorWithUnits *z_;
+		std::vector< std::string > headerlines;
 
 		void do_units_conversion_( size_t n_points, double *inplace, 
 			NCPA::units_t fromUnits, NCPA::units_t toUnits );

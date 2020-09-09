@@ -184,7 +184,7 @@ void NCPA::configure_epade_pe_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->setFooterHangingIndent( 4 );
 	ps->setCommandMode( true );
 	// ps->addFooterText("../bin/ePape --singleprop --starter gaussian --toy --freq 0.1 --azimuth 90 --maxrange_km 1000" );
-	ps->addFooterText("../bin/ePape --singleprop --toy --freq 0.1 --azimuth 90 --maxrange_km 1000" );
+	ps->addFooterText("../bin/ePape --singleprop --atmosfile NCPA_canonical_profile_trimmed.dat --freq 0.1 --azimuth 90 --maxrange_km 1000" );
 	ps->addBlankFooterLine();
 	// ps->addFooterText("../bin/ePape --singleprop --starter self --atmosfile NCPA_canonical_profile_trimmed.dat --freq 0.1 --azimuth 90 --maxrange_km 1000" );
 	ps->addFooterText("../bin/ePape --singleprop --atmosfile NCPA_canonical_profile_trimmed.dat --freq 0.1 --azimuth 90 --maxrange_km 1000" );
