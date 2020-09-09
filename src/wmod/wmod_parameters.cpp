@@ -50,6 +50,9 @@ void NCPA::configure_wmod_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->addParameterDescription( "Required Parameters", "--freq", "Frequency of analysis (Hz)" );
 
 	// optional parameters
+	ps->addParameter( new NCPA::StringParameter( "atmosheaderfile", "" ) );
+	ps->addParameterDescription( "Optional Parameters [default]", "--atmosheaderfile", "External header file, overrides internal header [None]" );
+
 	ps->addParameter( new NCPA::FloatParameter( "maxheight_km", 150.0 ) );
 	ps->addTest( new NCPA::FloatGreaterThanOrEqualToTest( "maxheight_km", 0.1 ));
 	ps->addParameterDescription( "Optional Parameters [default]", "--maxheight_km", "Maximum height of analysis in km [150.0]" );
@@ -199,7 +202,7 @@ void NCPA::configure_wmod_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->setFooterIndent( 4 );
 	ps->setFooterHangingIndent( 4 );
 	ps->setCommandMode( true );
-	ps->addFooterText("../bin/WMod --singleprop --atmosfile NCPA_canonical_profile_zuvwtdp.dat --azimuth 90 --freq 0.1");
+	ps->addFooterText("../bin/WMod --singleprop --atmosfile NCPA_canonical_profile_zuvwtdp.dat --atmosheaderfile sampleheader.dat --azimuth 90 --freq 0.1");
 	ps->addBlankFooterLine();
 	ps->addFooterText("../bin/WMod --singleprop --atmosfile NCPA_canonical_profile_zuvwtdp.dat --azimuth 90 --freq 0.1 --write_2d_tloss --sourceheight_km 60 --receiverheight_km 60");
 	ps->addBlankFooterLine();

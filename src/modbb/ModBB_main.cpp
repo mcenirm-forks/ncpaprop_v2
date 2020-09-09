@@ -71,7 +71,8 @@ int main( int argc, char **argv ) {
   //
   if (param->getBool( "dispersion" )) { //compute and write dispersion
       string atmosfile = param->getString( "atmosfile" );
-      Atmosphere1D *atm_profile = new Atmosphere1D( atmosfile );
+      string atmosheaderfile =  param->getString( "atmosheaderfile" );
+      Atmosphere1D *atm_profile = new Atmosphere1D( atmosfile, atmosheaderfile );
 
       // initialize dispersion file
       std::string dispersion_file = param->getString( "dispersion_file" );

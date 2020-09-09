@@ -99,6 +99,9 @@ void NCPA::configure_modbb_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->addTest( new NCPA::RequiredIfOtherIsPresentTest( "atmosfile", "dispersion" ) );
 	ps->addParameterDescription( "Modes of Operation", "--atmosfile", "Atmospheric profile filename [required]" );
 
+	ps->addParameter( new NCPA::StringParameter( "atmosheaderfile", "" ) );
+	ps->addParameterDescription( "Optional Parameters [default]", "--atmosheaderfile", "External header file, overrides internal header [None]" );
+
 	ps->addParameter( new NCPA::FloatParameter( "maxheight_km", 150.0 ) );
 	ps->addTest( new NCPA::FloatGreaterThanOrEqualToTest( "maxheight_km", 0.1 ));
 	ps->addParameterDescription( "Modes of Operation", "--maxheight_km", "Maximum height of analysis in km [150.0]" );

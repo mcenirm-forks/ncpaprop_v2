@@ -63,6 +63,9 @@ void NCPA::configure_modess_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->addParameterDescription( "Optional Parameters [default]", "--skiplines", "Number of header lines to skip in --atmosfile [0]" );
 	*/
 
+	ps->addParameter( new NCPA::StringParameter( "atmosheaderfile", "" ) );
+	ps->addParameterDescription( "Optional Parameters [default]", "--atmosheaderfile", "External header file, overrides internal header [None]" );
+
 	ps->addParameter( new NCPA::FloatParameter( "maxheight_km", 150.0 ) );
 	ps->addTest( new NCPA::FloatGreaterThanOrEqualToTest( "maxheight_km", 0.1 ));
 	ps->addParameterDescription( "Optional Parameters [default]", "--maxheight_km", "Maximum height of analysis in km [150.0]" );

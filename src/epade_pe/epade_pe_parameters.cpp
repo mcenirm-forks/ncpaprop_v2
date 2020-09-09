@@ -111,6 +111,9 @@ void NCPA::configure_epade_pe_parameter_set( NCPA::ParameterSet *ps ) {
 
 
 	// optional parameters
+	ps->addParameter( new NCPA::StringParameter( "atmosheaderfile", "" ) );
+	ps->addParameterDescription( "Optional Parameters [default]", "--atmosheaderfile", "External header file, overrides internal header [None]" );
+	
 	ps->addParameter( new NCPA::IntegerParameter( "npade", 4 ) );
 	ps->addTest( new NCPA::IntegerGreaterThanOrEqualToTest( "npade", 3 ) );
 	ps->addParameterDescription( "Optional Parameters [default]", "--npade", "Number of Pade coefficients to use [4]" );
@@ -184,7 +187,7 @@ void NCPA::configure_epade_pe_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->setFooterHangingIndent( 4 );
 	ps->setCommandMode( true );
 	// ps->addFooterText("../bin/ePape --singleprop --starter gaussian --toy --freq 0.1 --azimuth 90 --maxrange_km 1000" );
-	ps->addFooterText("../bin/ePape --singleprop --atmosfile NCPA_canonical_profile_trimmed.dat --freq 0.1 --azimuth 90 --maxrange_km 1000" );
+	// ps->addFooterText("../bin/ePape --singleprop --atmosfile NCPA_canonical_profile_trimmed.dat --freq 0.1 --azimuth 90 --maxrange_km 1000" );
 	ps->addBlankFooterLine();
 	// ps->addFooterText("../bin/ePape --singleprop --starter self --atmosfile NCPA_canonical_profile_trimmed.dat --freq 0.1 --azimuth 90 --maxrange_km 1000" );
 	ps->addFooterText("../bin/ePape --singleprop --atmosfile NCPA_canonical_profile_trimmed.dat --freq 0.1 --azimuth 90 --maxrange_km 1000" );

@@ -78,7 +78,8 @@ int main( int argc, char **argv ) {
 
 	// open the file
 	string atmosfile = 			param->getString( "atmosfile" );
-	Atmosphere1D *atm_profile = new Atmosphere1D( atmosfile );
+	string atmosheaderfile = 	param->getString( "atmosheaderfile" );
+	Atmosphere1D *atm_profile = new Atmosphere1D( atmosfile, atmosheaderfile );
 	 
 	// get solver object
 	//SolveModNB *a = new SolveModNB( param, atm_profile );

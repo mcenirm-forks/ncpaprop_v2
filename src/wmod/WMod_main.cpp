@@ -71,7 +71,8 @@ int main( int argc, char **argv ) {
   // obtain the parameter values from the user's options
   // open the file
   string atmosfile = param->getString( "atmosfile" );
-  Atmosphere1D *atm_profile = new Atmosphere1D( atmosfile );
+  string atmosheaderfile =  param->getString( "atmosheaderfile" );
+  Atmosphere1D *atm_profile = new Atmosphere1D( atmosfile, atmosheaderfile );
 
   // get solver object 
   //SolveWMod *a = new SolveWMod(param, atm_profile);

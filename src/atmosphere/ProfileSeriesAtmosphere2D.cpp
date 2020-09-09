@@ -6,7 +6,8 @@
 
 NCPA::ProfileSeriesAtmosphere2D::ProfileSeriesAtmosphere2D() : Atmosphere2D() { }
 
-NCPA::ProfileSeriesAtmosphere2D::ProfileSeriesAtmosphere2D( const std::string &filename ) : Atmosphere2D() {
+NCPA::ProfileSeriesAtmosphere2D::ProfileSeriesAtmosphere2D( const std::string& filename, 
+	std::string headerfilename ) : Atmosphere2D() {
 
 	std::string line;
 	std::vector< std::string > atmlines, fields;
@@ -48,7 +49,7 @@ NCPA::ProfileSeriesAtmosphere2D::ProfileSeriesAtmosphere2D( const std::string &f
 		}
 
 		atmfile = fields[ 1 ];
-		tempatm = new Atmosphere1D( atmfile );
+		tempatm = new Atmosphere1D( atmfile, headerfilename );
 		insert_profile( tempatm, range );
 	}
 	sort_profiles();
