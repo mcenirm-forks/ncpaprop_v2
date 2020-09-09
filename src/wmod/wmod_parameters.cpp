@@ -202,7 +202,7 @@ void NCPA::configure_wmod_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->setFooterIndent( 4 );
 	ps->setFooterHangingIndent( 4 );
 	ps->setCommandMode( true );
-	ps->addFooterText("../bin/WMod --singleprop --atmosfile NCPA_canonical_profile_zuvwtdp.dat --atmosheaderfile sampleheader.dat --azimuth 90 --freq 0.1");
+	ps->addFooterText("../bin/WMod --singleprop --atmosfile profile_noheader.dat --atmosheaderfile sampleheader.dat --azimuth 90 --freq 0.1");
 	ps->addBlankFooterLine();
 	ps->addFooterText("../bin/WMod --singleprop --atmosfile NCPA_canonical_profile_zuvwtdp.dat --azimuth 90 --freq 0.1 --write_2d_tloss --sourceheight_km 60 --receiverheight_km 60");
 	ps->addBlankFooterLine();
