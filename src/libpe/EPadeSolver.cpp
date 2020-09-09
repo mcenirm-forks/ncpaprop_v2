@@ -145,10 +145,10 @@ NCPA::EPadeSolver::EPadeSolver( NCPA::ParameterSet *param ) {
 	//NCPA::Atmosphere1D *atm_profile_1d;
 	if (use_atm_1d) {
 		atm_profile_2d = new NCPA::StratifiedAtmosphere2D( param->getString( "atmosfile" ) );
-	} else if (use_atm_toy) {
-		NCPA::Atmosphere1D *tempatm = new NCPA::ToyAtmosphere1D();
-		atm_profile_2d = new NCPA::StratifiedAtmosphere2D( tempatm );
-		delete tempatm;
+	// } else if (use_atm_toy) {
+	// 	NCPA::Atmosphere1D *tempatm = new NCPA::ToyAtmosphere1D();
+	// 	atm_profile_2d = new NCPA::StratifiedAtmosphere2D( tempatm );
+	// 	delete tempatm;
 	} else if (use_atm_2d) {
 		atm_profile_2d = new NCPA::ProfileSeriesAtmosphere2D( param->getString( "atmosfile2d" ) );
 		atm_profile_2d->convert_range_units( NCPA::Units::fromString( "m" ) );

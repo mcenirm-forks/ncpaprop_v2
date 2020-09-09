@@ -40,14 +40,15 @@ void NCPA::configure_epade_pe_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->addParameterDescription( "Options Control", "--printparams", "Print parameter summary to screen" );
 
 	// Atmosphere
-	std::string atmosphere_types[ 3 ] = { "atmosfile", "atmosfile2d", "toy" };
+	// std::string atmosphere_types[ 3 ] = { "atmosfile", "atmosfile2d", "toy" };
+	std::string atmosphere_types[ 2 ] = { "atmosfile", "atmosfile2d" };
 	ps->addParameter( new NCPA::StringParameter( atmosphere_types[ 0 ] ) );
 	ps->addParameter( new NCPA::StringParameter( atmosphere_types[ 1 ] ) );
-	ps->addParameter( new NCPA::FlagParameter( atmosphere_types[ 2 ] ) );
-	ps->addTest( new NCPA::RadioButtonTest( "atmosphere_type", 3, atmosphere_types ) );
+	// ps->addParameter( new NCPA::FlagParameter( atmosphere_types[ 2 ] ) );
+	ps->addTest( new NCPA::RadioButtonTest( "atmosphere_type", 2, atmosphere_types ) );
 	ps->addParameterDescription( "Atmosphere", "--atmosfile", "1-D atmospheric profile filename" );
-	ps->addParameterDescription( "Atmosphere", "--atmosfile2d", "2-D atmospheric profile filename" );
-	ps->addParameterDescription( "Atmosphere", "--toy", "Use NCPA toy atmosphere" );
+	ps->addParameterDescription( "Atmosphere", "--atmosfile2d", "2-D atmospheric summary filename (see manual)" );
+	//ps->addParameterDescription( "Atmosphere", "--toy", "Use NCPA toy atmosphere" );
 
 
 	// Required parameters
