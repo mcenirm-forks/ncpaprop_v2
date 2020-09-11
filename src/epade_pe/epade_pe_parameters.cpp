@@ -193,7 +193,7 @@ void NCPA::configure_epade_pe_parameter_set( NCPA::ParameterSet *ps ) {
 	ps->addFooterText("../bin/ePape --singleprop --atmosfile NCPA_canonical_profile_trimmed.dat --freq 0.1 --azimuth 90 --maxrange_km 1000" );
 	ps->addBlankFooterLine();
 	//ps->addFooterText("../bin/ePape --singleprop --starter self --atmosfile2d atmosphere_2d_summary.dat --freq 0.5 --azimuth 90 --maxrange_km 1000 --lossless" );
-	ps->addFooterText("../bin/ePape --singleprop --atmosfile2d atmosphere_2d_summary.dat --freq 0.5 --azimuth 90 --maxrange_km 1000 --lossless --write_2d_tloss" );
+	ps->addFooterText("../bin/ePape --singleprop --atmosfile2d toy_profile_2d_summary.dat --freq 0.5 --azimuth 90 --maxrange_km 1000 --lossless --write_2d_tloss" );
 	ps->addBlankFooterLine();
 	// ps->addFooterText("../bin/ePape --singleprop --starter self --atmosfile2d atmosphere_2d_summary.dat --freq 1.0 --azimuth 90 --maxrange_km 500 --topo");
 	// ps->addFooterText("../bin/ePape --singleprop --atmosfile2d atmosphere_2d_summary.dat --freq 1.0 --azimuth 90 --maxrange_km 500 --topo");
