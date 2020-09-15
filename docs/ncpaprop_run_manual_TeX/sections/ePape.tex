@@ -331,7 +331,7 @@ Examples (run from 'samples' directory):
 
 \end{verbatim}
 
-The basic functionality of ePape is to produce single frequency transfer function for signal propagation in the effective sound speed approximation. Explicitly, the long range propagated acoustic pressure amplitude at a single frequency produced by a unit point source at a reference range of 1 km is computed. The density scaled pressure, $\rho_0^{-\frac{1}{2}}P$, is written to files. The magnitude of the transfer function is refereed to as the signal attenuation. To obtain the physical attenuation the output must be multiplied by $\rho_0^{-\frac{1}{2}}$; however, for purposes of visualization this is not advised since the physical acoustic pressure decreases dramatically with increasing altitude, making it difficult to visualize. The attenuation in dB relative to 1 is referred to as the transmission loss. 
+The basic functionality of ePape is to produce single frequency transfer function for signal propagation in the effective sound speed approximation. Explicitly, the long range propagated acoustic pressure amplitude at a single frequency produced by a unit point source at a reference range of 1 km is computed. The density scaled pressure, $\rho_0^{-\frac{1}{2}}P$, is written to files. The magnitude of the transfer function is referred to as the signal attenuation. To obtain the physical attenuation the output must be multiplied by $\rho_0^{-\frac{1}{2}}$; however, for purposes of visualization this is not advised since the physical acoustic pressure decreases dramatically with increasing altitude, making it difficult to visualize. The attenuation in dB relative to 1 is referred to as the transmission loss. 
 
 \verb+Options Control:+ Parameters and options can be sent to {\bf ePape} either on the command line, or through a parameter file \verb+epade_pe.param+ by setting the option \verb+--paramfile+. The option \verb+--paramfile+ causes the current parameter set to be printed to the screen. 
 
@@ -408,7 +408,7 @@ The lossless and lossy results are shown in Fig.\,\ref{fig: ePape ex3}.
 \begin{center}
 \includegraphics[width=0.9\textwidth]{figs/ePape_ex3}
 \end{center}
-\caption{1Shown is the lossy transmission loss magnitude.}
+\caption{Shown is the lossy transmission loss magnitude.}
 \label{fig: ePape ex3}
 \end{figure}
 
