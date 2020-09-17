@@ -168,8 +168,13 @@ void NCPA::ESSModeSolver::setParams( NCPA::ParameterSet *param, NCPA::Atmosphere
 		atm_profile->copy_vector_property( "C0", "_C0_" );
 		atm_profile->convert_property_units( "_C0_", Units::fromString( "m/s" ) );
 	} else {
-		atm_profile->calculate_sound_speed_from_pressure_and_density( "_C0_", "P", "RHO", 
-			Units::fromString( "m/s" ) );
+		if (atm_profile->contains_vector( "P" ) && atm_profile->contains_vector("RHO")) {
+			atm_profile->calculate_sound_speed_from_pressure_and_density( "_C0_", "P", "RHO", 
+				Units::fromString( "m/s" ) );
+		} else {
+			atm_profile->calculate_sound_speed_from_temperature( "_C0_", "T", 
+				Units::fromString( "m/s" ) );
+		}
 	}
 	atm_profile->calculate_wind_speed( "_WS_", "U", "V" );
 	atm_profile->calculate_wind_direction( "_WD_", "U", "V" );

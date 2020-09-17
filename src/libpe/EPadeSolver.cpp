@@ -189,8 +189,13 @@ NCPA::EPadeSolver::EPadeSolver( NCPA::ParameterSet *param ) {
 			(*it)->convert_property_units( "C0", Units::fromString( "m/s" ) );
 			(*it)->copy_vector_property( "C0", "_C0_" );
 		} else {
-			(*it)->calculate_sound_speed_from_pressure_and_density( "_C0_", "P", "RHO", 
-				Units::fromString( "m/s" ) );
+			if ( (*it)->contains_vector("P") && (*it)->contains_vector("RHO") ) {
+				(*it)->calculate_sound_speed_from_pressure_and_density( "_C0_", "P", "RHO", 
+					Units::fromString( "m/s" ) );
+			} else {
+				(*it)->calculate_sound_speed_from_temperature( "_C0_", "T",
+					Units::fromString( "m/s" ) );
+			}
 		}
 	}
 	atm_profile_2d->calculate_wind_speed( "_WS_", "U", "V" );
