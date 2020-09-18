@@ -74,7 +74,7 @@ With this simple choice for the discrete approximation to the second derivative 
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.6]{figs/wvnums_modess}
+\includegraphics[width=0.45\textwidth]{figs/wvnums_modess}
 \end{center}
 \caption{Phase velocities used in {\bf Modess} for the NCPA toy atmosphere. The black curve is the effective sound speed for eastward propagation. The blue double-headed arrow shows the range of phase velocities needed in the modal sum. The red double-headed arrow shows the range of phase velocities needed for propagation to or from the ground. The minimum trace velocity is chosen so that all propagating modes are computed. The maximum trace velocity is chosen so that the modal sum converges in the far field. }
 \label{fig:wvnums_modess}
@@ -228,7 +228,7 @@ In this example the four required options are set. Otherwise the default setting
 The output is, by default, the one-dimensional (1D) transmission loss on the ground for both lossy and lossless cases and is written into the text files \verb+tloss_1d.nm+ and \verb+tloss_1d.lossless.nm+ as described above in section~\ref{sec:running modess}.  An example of the magnitude of the complex 1D transmission loss output is shown in Figure \ref{fig: modess 1D tl}. Note that in general the output from all programs will be saved in the directory from which the code is run.  
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.45,trim = 20 20 110 140,clip]{figs/modess_ex2.png}
+\includegraphics[width=0.6\textwidth]{figs/modess_ex2.png}
 \end{center}
 \caption{2D transmission loss magnitude at 0.1 Hz obtained with {\bf Modess} for eastward propagation in the NCPA toy model. The source is placed on the ground at the origin.}
 \label{fig: modess 2D tl}
@@ -242,8 +242,8 @@ In the second example the \verb+--write_2D_Tloss+ flag is appended to the comman
 As described above in section~\ref{sec:running modess}, the output is written to the file \verb+tloss2d.nm+. The 2D transmission loss magnitude that results from eastward propagation in the NCPA toy model is plotted in Figure \ref{fig: modess 2D tl}. 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.45,trim = 70 20 180 140,clip]{figs/modess_ex3}\ 
-\includegraphics[scale=0.45,trim = 70 20 180 140,clip]{figs/modess_ex3_inco}
+\includegraphics[width=0.4\textwidth]{figs/modess_ex3}\ 
+\includegraphics[width=0.4\textwidth]{figs/modess_ex3_inco}
 \end{center}
 \caption{N by 2D transmission loss magnitude and incoherent transmission loss obtained with {\bf Modess} for ground-to-ground propagation in the NCPA toy model atmosphere from a source at the origin to all azimuths.}
 \label{fig: modess Nby2D tl}
@@ -255,18 +255,16 @@ In the third example the \verb+--multiprop+ flag is appended to the command line
                   --freq 0.1 --azimuth_start 0 --azimuth_end 360 --azimuth_step 1
 \end{verbatim}
 The output is written to the files \verb+Nby2D_tloss_1d.nm+ and \verb+Nby2D_tloss_1d.lossless.nm+ as described above in section~\ref{sec:running modess}. The lossless transmission losses are also computed and saved as are the incoherent transmission losses and the resulting transmission loss magnitude is plotted in Figure \ref{fig: modess Nby2D tl}. 
-
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{figs/modess_ex2_20km_source}
+\end{center}
+\caption{2D transmission loss magnitude for propagation from an elevated source at 20 km altitude to the ground, obtained with {\bf Modess} for propagation in the NCPA toy atmosphere.}
+\label{fig: modess 2D elevated source}
+\end{figure}
 A final example, not included in the \textbf{Modess} help page consider the calculation of a 2D transmission loss from an elevated source. For eastward propagation in the NCPA toy atmosphere from a source at 20 km altitude the command line entry is 
 \begin{verbatim} 
     ../bin/Modess --singleprop --atmosfile NCPA_canonical_profile_zuvwtdp.dat \ 
                   --azimuth 90 --freq 0.1 --write_2d_tloss --sourceheight_km 20
 \end{verbatim}
 The resulting 2D transmission loss magnitude is plotted in Figure \ref{fig: modess 2D elevated source}. Note that the calculation only goes out to a range of 1 km. 
-
-\begin{figure}
-\begin{center}
-\includegraphics[scale=0.45,trim = 20 20 110 140,clip]{figs/modess_ex2_20km_source}
-\end{center}
-\caption{2D transmission loss magnitude for propagation from an elevated source at 20 km altitude to the ground, obtained with {\bf Modess} for propagation in the NCPA toy atmosphere.}
-\label{fig: modess 2D elevated source}
-\end{figure}

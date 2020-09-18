@@ -161,14 +161,14 @@ The options and flags for {\bf WMod} are the same as for {\bf Modess}. The reade
 
 The \textbf{WMod} help page ends with three examples. The examples set the frequency to 0.1 Hz to keep run times short. The first is a simple example illustrating the primary input modes for \textbf{WMod}. It is assumed that the user runs it in the \verb+samples+ directory. Note that if the \textbf{ncpaprop} \verb+bin+ directory is in the system's path one may enter \verb+WMod+ rather than \verb+../bin/WMod+. The command line entry for the example is 
 \begin{verbatim} 
-    ../bin/WMod --singleprop --atmosfile profile_noheader.dat \
-         --atmosheaderfile sampleheader.dat --azimuth 90 --freq 0.1
+    ../bin/WMod --singleprop --atmosfile profile_noheader.dat \ 
+                --atmosheaderfile sampleheader.dat --azimuth 90 --freq 0.1
 \end{verbatim}
-In this example the four required options are set, and an external header file is specified. Otherwise the default settings are used. Ground-to-ground propagation in the NCPA toy atmosphere (see Figure \ref{fig:canonic_sound_speeds}) at 90 degrees azimuth (from North), eastward propagation, at frequency of 0.1 Hz is modelled. By default the signal is propagated out to 1000 km in range with range steps of 1 km. The atmospheric profiles are specified in the column-based text file \verb"profile_noheader.dat" that is included in the \verb+samples+ directory, and the profile metadata is provided in the additional text file \verb"sampleheader.dat" rather than as a header in the same file. 
+In this example the four required options are set, and an external header file is specified. Otherwise the default settings are used. Ground-to-ground propagation in the NCPA toy atmosphere (see Figure \ref{fig:canonic_sound_speeds}) at 90 degrees azimuth (from North), eastward propagation, at frequency of 0.1 Hz is modelled. By default the signal is propagated out to 1000 km in range with range steps of 1 km. The atmospheric profiles are specified in the column-based text file \verb"profile_noheader.dat" that is included in the \verb+samples+ directory, and the profile metadata is provided in the additional text file \verb"sampleheader.dat" rather than as a header in the same file.
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.60]{figs/modess_ex1}
+\includegraphics[width=0.5\textwidth]{figs/modess_ex1}
 \end{center}
 \caption{1D transmission loss magnitude at 0.1 Hz obtained with \textbf{WMod} for eastward ground-to-ground propagation in the NCPA toy atmosphere shown in Figure \ref{fig:canonic_sound_speeds}. Shown are the lossless transmission loss magnitude, the lossy transmission loss magnitude and the lossy incoherent transmission loss.}
 \label{fig: wmod 1D tl}
@@ -178,7 +178,7 @@ The output is, by default, the one-dimensional (1D) transmission loss on the gro
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.45,trim = 20 20 110 140,clip]{figs/wmod_ex2}
+\includegraphics[width=0.5\textwidth]{figs/wmod_ex2}
 \end{center}
 \caption{2D transmission loss magnitude at 0.1 Hz obtained with {\bf WMod} for eastward propagation in the NCPA toy model. The source is placed on the ground at the origin.}
 \label{fig: wmod 2D tl}
@@ -195,8 +195,8 @@ As described above and in section~\ref{sec:running modess}, the output is writte
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.45,trim = 70 20 180 140,clip]{figs/wmod_ex3}
-\includegraphics[scale=0.45,trim = 70 20 180 140,clip]{figs/wmod_ex3_inco}
+\includegraphics[width=0.45\textwidth]{figs/wmod_ex3}
+\includegraphics[width=0.45\textwidth]{figs/wmod_ex3_inco}
 \end{center}
 \caption{N by 2D transmission loss magnitude and incoherent transmission loss obtained with {\bf WMod} for ground-to-ground propagation in the NCPA toy model atmosphere from a source at the origin to all azimuths.}
 \label{fig: wmod Nby2D tl}
