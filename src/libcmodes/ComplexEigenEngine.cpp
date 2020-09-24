@@ -148,8 +148,8 @@ int NCPA::ComplexEigenEngine::doESSCalculation( std::complex<double> *diag, int 
 	ierr = PetscPrintf(PETSC_COMM_WORLD," Number of converged eigenpairs: %D\n\n",*nconv);CHKERRQ(ierr);
 
 	PetscReal error;
-    printf("        k           ||Ax-kx||/||kx||\n");
-    printf("-------------------------------------\n");
+    // printf("        k           ||Ax-kx||/||kx||\n");
+    // printf("-------------------------------------\n");
 	if ((*nconv)>0) {
 		for (i=0;i<(*nconv);i++) {
 			ierr = EPSGetEigenpair(eps,i,&kr,&ki,xr,xi);CHKERRQ(ierr);

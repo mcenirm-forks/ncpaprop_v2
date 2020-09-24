@@ -199,7 +199,7 @@ void NCPA::ESSComplexModeSolver::setParams( NCPA::ParameterSet *param, NCPA::Atm
 
 // utility to print the parameters to the screen
 void NCPA::ESSComplexModeSolver::printParams() {
-	printf(" Effective Sound Speed Normal Modes Solver Parameters:\n");
+	printf(" Effective Sound Speed Complex Normal Modes Solver Parameters:\n");
 	printf("                   freq : %g\n", freq);
 	if (!Nby2Dprop) {
 		printf("                azimuth : %g\n", azi);
