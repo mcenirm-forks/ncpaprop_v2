@@ -124,7 +124,9 @@ int NCPA::EigenEngine::doESSCalculation( double *diag, int Nz_grid, double dz, d
 	Optional: Get some information from the solver and display it
 	*/
 	ierr = EPSGetIterationNumber(eps,&its);CHKERRQ(ierr);
+  ierr = PetscPrintf(PETSC_COMM_WORLD," Number of iterations of the method: %d\n",its);CHKERRQ(ierr);
 	ierr = EPSGetType(eps,&type);CHKERRQ(ierr);
+  ierr = PetscPrintf(PETSC_COMM_WORLD," Solution method: %s\n\n",type);CHKERRQ(ierr);
 	ierr = EPSGetDimensions(eps,&nev,PETSC_NULL,PETSC_NULL);CHKERRQ(ierr);
 	ierr = EPSGetTolerances(eps,&tol,&maxit);CHKERRQ(ierr);
 	

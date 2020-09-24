@@ -52,6 +52,20 @@ then
   echo $1 $2
 fi
 
+if
+    test $1 = plotc1dtl
+then
+  ## plot from script
+  gnuplot -persist \
+    -e "set grid; show grid; set xlabel 'Range [km]'; set ylabel 'TL [dB]';" \
+    -e "set title 'CModess: 1D transmission loss; freq = $2 Hz';" \
+    -e "plot './tloss_1d.cnm' using 1:(10*log10(\$2**2 + \$3**2)) with lines lt 3 title 'lossy', './tloss_1d.lossless.cnm' using 1:(10*log10(\$2**2 + \$3**2)) with lines lt 1 title 'lossless';"
+#    -e "plot './tloss_1d.lossless.cnm' using 1:(10*log10(\$2**2 + \$3**2)) with lines lt 3 title 'lossless', './tloss_1d.cnm' using 1:(10*log10(\$2**2 + \$3**2)) with lines lt 1 title 'lossy';"
+
+  echo $1 $2
+fi
+
+
 
 
 # plot 1D TL to .png
@@ -187,6 +201,21 @@ then
     -e "set title 'Transmission loss'; replot;"
   echo $1 $2
 fi
+
+if
+    test $1 = Nby2Dlossless
+then
+  gnuplot -persist \
+    -e "set pm3d map;" \
+    -e "set cbrange [-140:-100];" \
+    -e "set palette rgb  7, 5,15;" \
+    -e "set size square;" \
+    -e "splot './Nby2D_tloss_1d.lossless.nm' using (\$1*(sin(\$2*pi/180))):(\$1*(cos(\$2*pi/180))):(10*log10(\$3**2 + \$4**2)) title '';" \
+    -e "set xlabel 'km'; set ylabel 'km';" \
+    -e "set title 'Transmission loss'; replot;"
+  echo $1 $2
+fi
+
 
 if 
     test $1 = WNby2D
