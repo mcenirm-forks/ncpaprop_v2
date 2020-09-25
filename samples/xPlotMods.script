@@ -112,10 +112,24 @@ then
     -e "set pm3d map;" \
     -e "set cbrange [-140:-100];" \
     -e "set xlabel 'Range [km]'; set ylabel 'Height [km]';" \
-    -e "set title 'ModessRD1WCM: 2D transmission loss [dB]; freq = $2 Hz';" \
+    -e "set title 'Modess: 2D transmission loss [dB]; freq = $2 Hz';" \
     -e "splot './tloss_2d.nm' using 1:2:(20*log10(sqrt(\$3**2 + \$4**2)));"
   echo $1 $2
 fi
+
+
+if
+    test $1 = plotc2dtl
+then
+  gnuplot -persist \
+    -e "set pm3d map;" \
+    -e "set cbrange [-140:-100];" \
+    -e "set xlabel 'Range [km]'; set ylabel 'Height [km]';" \
+    -e "set title 'CModess: 2D transmission loss [dB]; freq = $2 Hz';" \
+    -e "splot './tloss_2d.cnm' using 1:2:(20*log10(sqrt(\$3**2 + \$4**2)));"
+  echo $1 $2
+fi
+
 
 # plot 2D PE to the screen
 if
