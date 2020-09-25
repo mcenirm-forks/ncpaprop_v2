@@ -641,14 +641,13 @@ AC_CHECK_FILE( ${SLEPC_DIR}/${PETSC_ARCH_COMPLEX}/lib/slepc/conf/slepcvariables,
 
 
 # Set output variables to propagate into Makefiles
-AC_SUBST([INCLUDEFLAGS],"-I. -I../common -I../atmosphere -I../libmodes -I../libcmodes -I../libpe -I../libbroadband -I/usr/local/include -I/usr/include")
+AC_SUBST([INCLUDEFLAGS],"-I. -I../common -I../atmosphere -I../libmodes -I../libpe -I../libbroadband -I/usr/local/include -I/usr/include")
 AC_SUBST([LIBS],"-lgsl -lgslcblas -lm -lfftw3")
 AC_SUBST([WARNINGFLAGS],${warning_compiler_flags})
 AC_SUBST([CXXFLAGS], "-fpic -c -Wall")
 LDFLAGS="${LDFLAGS} -L/usr/lib"
 AC_SUBST([STATICLIBS],"../../lib/libatmosphere.a ../../lib/libcommon.a")
 AC_SUBST([MODELIBS],"../../lib/libmodes.a")
-AC_SUBST([CMODELIBS],"../../lib/libcmodes.a")
 AC_SUBST([PELIBS],"../../lib/libpe.a")
 AC_SUBST([BROADBANDLIBS],"../../lib/libbroadband.a")
 AC_SUBST([LDFLAGS],$LDFLAGS)
@@ -672,7 +671,6 @@ AC_CONFIG_FILES([
 		src/modbb/Makefile
 		src/epade_pe/Makefile
 		src/wmod/Makefile
-		src/cmodess/Makefile
 ])
 
 

@@ -13,7 +13,7 @@
 # SLEPC_INCLUDE_FILE_GENERIC = @SLEPC_INCLUDE_FILE_GENERIC@
 
 #package-parts=common atmosphere raytrace modess modbb modess_rd_1wcm pade_pe wmod cmodess cmodbb wnlrt tdpape
-package-parts=common atmosphere libmodes libcmodes libpe libbroadband modess cmodess wmod modbb epade_pe
+package-parts=common atmosphere libmodes libpe libbroadband modess wmod modbb epade_pe
 
 
 # Build everything
@@ -30,8 +30,8 @@ atmosphere:
 libmodes:
 	$(MAKE) -C src/libmodes all PETSC_ARCH=@PETSC_ARCH_REAL@ PETSC_DIR=@PETSC_DIR@ SLEPC_DIR=@SLEPC_DIR@
 
-libcmodes:
-	$(MAKE) -C src/libcmodes all PETSC_ARCH=@PETSC_ARCH_COMPLEX@ PETSC_DIR=@PETSC_DIR@ SLEPC_DIR=@SLEPC_DIR@
+#libcmodes:
+#	$(MAKE) -C src/libcmodes all PETSC_ARCH=@PETSC_ARCH_COMPLEX@ PETSC_DIR=@PETSC_DIR@ SLEPC_DIR=@SLEPC_DIR@
 
 libbroadband:
 	$(MAKE) -C src/libbroadband all PETSC_ARCH=@PETSC_ARCH_REAL@ PETSC_DIR=@PETSC_DIR@ SLEPC_DIR=@SLEPC_DIR@

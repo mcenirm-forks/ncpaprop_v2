@@ -325,10 +325,6 @@ void NCPA::Atmosphere1D::read_attenuation_from_file( std::string new_key, std::s
 		attn[ i ] = this_a;
 	}
 
-	// calculations in km
-	NCPA::units_t alt_units = get_altitude_units();
-	this->convert_altitude_units( NCPA::Units::fromString( "km" ) );
-
 	// extend if necessary
 	bool short_on_bottom = (z_a[0] > get_minimum_altitude());
 	bool short_on_top    = (z_a[nlines-1] < get_maximum_altitude());
@@ -336,8 +332,8 @@ void NCPA::Atmosphere1D::read_attenuation_from_file( std::string new_key, std::s
 	if (short_on_bottom) {
 		temp_z = new double[ nlines+1 ];
 		temp_a = new double[ nlines+1 ];
-		std::memcpy( temp_z+1, z_a, nlines*sizeof(double) );
-		std::memcpy( temp_a+1, attn, nlines*sizeof(double) );
+		std::memcpy( temp_z+1, z_a, nlines );
+		std::memcpy( temp_a+1, attn, nlines );
 		temp_z[ 0 ] = get_minimum_altitude();
 		temp_a[ 0 ] = temp_a[ 1 ];
 		delete [] z_a;
@@ -349,10 +345,10 @@ void NCPA::Atmosphere1D::read_attenuation_from_file( std::string new_key, std::s
 	if (short_on_top) {
 		temp_z = new double[ nlines+1 ];
 		temp_a = new double[ nlines+1 ];
-		std::memcpy( temp_z, z_a, nlines*sizeof(double) );
-		std::memcpy( temp_a, attn, nlines*sizeof(double) );
-		temp_z[ nlines ] = get_maximum_altitude();
-		temp_a[ nlines ] = temp_a[ nlines-2 ];
+		std::memcpy( temp_z, z_a, nlines );
+		std::memcpy( temp_a, attn, nlines );
+		temp_z[ nlines-1 ] = get_maximum_altitude();
+		temp_a[ nlines-1 ] = temp_a[ nlines-2 ];
 		delete [] z_a;
 		delete [] attn;
 		z_a = temp_z;
@@ -362,6 +358,8 @@ void NCPA::Atmosphere1D::read_attenuation_from_file( std::string new_key, std::s
 
 	// Now interpolate onto current z grid
 	double *existing_z = new double[ this->nz() ];
+	NCPA::units_t alt_units = get_altitude_units();
+	this->convert_altitude_units( NCPA::Units::fromString( "km" ) );
 	this->get_altitude_vector( existing_z );
 	double *interp_attn = new double[ this->nz() ];
 	std::memset( interp_attn, 0, this->nz() * sizeof( double ) );
@@ -375,7 +373,7 @@ void NCPA::Atmosphere1D::read_attenuation_from_file( std::string new_key, std::s
 	gsl_spline_free( aspl );
 	gsl_interp_accel_free( aacc );
 
-	this->add_property( new_key, this->nz(), interp_attn, NCPA::Units::fromString( "km" ) );
+	this->add_property( new_key, nlines, interp_attn, NCPA::Units::fromString( "km" ) );
 	this->convert_altitude_units( alt_units );
 	delete [] interp_attn;
 	delete [] existing_z;

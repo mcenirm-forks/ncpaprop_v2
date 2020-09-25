@@ -631,7 +631,6 @@ SLEPC_DIR
 PETSC_DIR
 BROADBANDLIBS
 PELIBS
-CMODELIBS
 MODELIBS
 STATICLIBS
 WARNINGFLAGS
@@ -8818,7 +8817,7 @@ fi
 
 
 # Set output variables to propagate into Makefiles
-INCLUDEFLAGS="-I. -I../common -I../atmosphere -I../libmodes -I../libcmodes -I../libpe -I../libbroadband -I/usr/local/include -I/usr/include"
+INCLUDEFLAGS="-I. -I../common -I../atmosphere -I../libmodes -I../libpe -I../libbroadband -I/usr/local/include -I/usr/include"
 
 LIBS="-lgsl -lgslcblas -lm -lfftw3"
 
@@ -8830,8 +8829,6 @@ LDFLAGS="${LDFLAGS} -L/usr/lib"
 STATICLIBS="../../lib/libatmosphere.a ../../lib/libcommon.a"
 
 MODELIBS="../../lib/libmodes.a"
-
-CMODELIBS="../../lib/libcmodes.a"
 
 PELIBS="../../lib/libpe.a"
 
@@ -8854,7 +8851,7 @@ PETSC_ARCH_COMPLEX=$PETSC_ARCH_COMPLEX
 
 
 
-ac_config_files="$ac_config_files Makefile src/common/Makefile src/atmosphere/Makefile src/libmodes/Makefile src/libpe/Makefile src/libbroadband/Makefile src/modess/Makefile src/modbb/Makefile src/epade_pe/Makefile src/wmod/Makefile src/cmodess/Makefile"
+ac_config_files="$ac_config_files Makefile src/common/Makefile src/atmosphere/Makefile src/libmodes/Makefile src/libpe/Makefile src/libbroadband/Makefile src/modess/Makefile src/modbb/Makefile src/epade_pe/Makefile src/wmod/Makefile"
 
 
 
@@ -9573,7 +9570,6 @@ do
     "src/modbb/Makefile") CONFIG_FILES="$CONFIG_FILES src/modbb/Makefile" ;;
     "src/epade_pe/Makefile") CONFIG_FILES="$CONFIG_FILES src/epade_pe/Makefile" ;;
     "src/wmod/Makefile") CONFIG_FILES="$CONFIG_FILES src/wmod/Makefile" ;;
-    "src/cmodess/Makefile") CONFIG_FILES="$CONFIG_FILES src/cmodess/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
