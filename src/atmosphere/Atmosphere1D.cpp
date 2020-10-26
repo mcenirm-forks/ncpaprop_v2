@@ -326,6 +326,8 @@ void NCPA::Atmosphere1D::read_attenuation_from_file( std::string new_key, std::s
 	}
 
 	// extend if necessary
+	NCPA::units_t alt_units = get_altitude_units();
+	this->convert_altitude_units( NCPA::Units::fromString( "km" ) );
 	bool short_on_bottom = (z_a[0] > get_minimum_altitude());
 	bool short_on_top    = (z_a[nlines-1] < get_maximum_altitude());
 	double *temp_a, *temp_z;
@@ -358,8 +360,6 @@ void NCPA::Atmosphere1D::read_attenuation_from_file( std::string new_key, std::s
 
 	// Now interpolate onto current z grid
 	double *existing_z = new double[ this->nz() ];
-	NCPA::units_t alt_units = get_altitude_units();
-	this->convert_altitude_units( NCPA::Units::fromString( "km" ) );
 	this->get_altitude_vector( existing_z );
 	double *interp_attn = new double[ this->nz() ];
 	std::memset( interp_attn, 0, this->nz() * sizeof( double ) );
@@ -373,7 +373,7 @@ void NCPA::Atmosphere1D::read_attenuation_from_file( std::string new_key, std::s
 	gsl_spline_free( aspl );
 	gsl_interp_accel_free( aacc );
 
-	this->add_property( new_key, nlines, interp_attn, NCPA::Units::fromString( "km" ) );
+	this->add_property( new_key, this->nz(), interp_attn, NCPA::Units::fromString( "km" ) );
 	this->convert_altitude_units( alt_units );
 	delete [] interp_attn;
 	delete [] existing_z;
