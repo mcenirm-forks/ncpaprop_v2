@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([NCPA Propagation Modeling Suite], [1.4.0], [claus@olemiss.edu], ncpaprop)
+AC_INIT([NCPA Propagation Modeling Suite], [2.0.1], [claus@olemiss.edu], ncpaprop)
 #AM_INIT_AUTOMAKE
 
 AC_CONFIG_SRCDIR([src/common/parameterset.h])
@@ -12,6 +12,8 @@ AC_LANG([C++])
 
 # set default variables
 default_petsc_build_dir="${abs_builddir}/extern/petsc"
+default_petsc_branch="release"
+petsc_url="https://gitlab.com/petsc/petsc.git"
 default_slepc_build_dir="${abs_builddir}/extern/slepc"
 default_slepc_version="3.13.4"
 slepc_url_base="https://slepc.upv.es/download/distrib"
@@ -354,7 +356,7 @@ AS_IF(
 			[AC_MSG_RESULT([yes])],
 			[
 				AC_MSG_RESULT([no, cloning])
-				git clone -b maint https://gitlab.com/petsc/petsc.git .
+				git clone -b ${default_petsc_branch} ${petsc_url} .
 			]
 		)
 
