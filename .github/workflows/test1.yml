@@ -1,0 +1,12 @@
+name: test1
+on: workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run: |
+          ./configure --with-localpetsc --enable-autodependencies
+          make
