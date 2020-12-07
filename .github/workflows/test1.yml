@@ -17,6 +17,9 @@ jobs:
       image: ${{ matrix.image }}
     runs-on: ubuntu-20.04
     steps:
+      - name: Setup
+        run: |
+          sudo apt update
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
