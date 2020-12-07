@@ -6,12 +6,13 @@ jobs:
     strategy:
       matrix:
         image:
-          - "ubuntu:20.04"
-          - "ubuntu:18.04"
-          - "debian:10"
-          - "debian:8"
-          - "centos:8"
-          - "centos:7"
+          - "mcenirm/ubuntu:20.04-build"
+          # - "ubuntu:20.04"
+          # - "ubuntu:18.04"
+          # - "debian:10"
+          # - "debian:8"
+          # - "centos:8"
+          # - "centos:7"
     container:
       image: ${{ matrix.image }}
     runs-on: ubuntu-20.04
